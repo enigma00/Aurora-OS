@@ -1,0 +1,4 @@
+default 0
+
+title Aurora
+kernel /boot/kernel.bin
