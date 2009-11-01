@@ -38,7 +38,7 @@ todolist:
 	-@for file in $(ALLFILES); do fgrep -H -e TODO -e FIXME $$file; done; true
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -g -I./inc -c $< -o $@
+	@$(CC) $(CFLAGS) -g -I./inc -I./inc/libk -c $< -o $@
 
 %.o: %.asm
 	@$(AS) -f elf $< -o $@
