@@ -27,6 +27,8 @@ test: aurora.iso
 	@qemu -cdrom aurora.iso -net none -s
 
 debug:
+	@qemu -cdrom aurora.iso -net none -S &
+	sleep 2
 	gdb
 
 clean:
