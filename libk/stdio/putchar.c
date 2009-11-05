@@ -2,7 +2,7 @@
 
 int putchar(int c, screen_t *scr)
 {
-	switch c
+	switch (c)
 	{
 		case 0x08:
 			if (scr->csr_x <= 0)
@@ -28,10 +28,10 @@ int putchar(int c, screen_t *scr)
 			scr->textptr[scr->csr_y * scr->width + scr->csr_x] = (((unsigned char) (c & 0xFF)) | (scr->attrib << 8));
 			scr->csr_x++;
 	}
-	if (scr->csr_x >= scr->width)
+	if ((unsigned )scr->csr_x >= scr->width)
 	{
-		csr_x = 0;
-		csr_y++;
+		scr->csr_x = 0;
+		scr->csr_y++;
 	}
 
 	scroll(scr);

@@ -2,7 +2,6 @@
 #define __STDIO_H
 
 #define EOF -1
-#define NULL (void*)0
 
 typedef struct screen
 {
