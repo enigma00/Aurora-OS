@@ -17,10 +17,12 @@ typedef struct screen
 	unsigned int height;
 } screen_t;
 
-screen_t *current;
+screen_t *curr_screen;
 
 int putchar(int c, screen_t *scr);
+int putchar_helper(int c);
 int puts(const char *str, screen_t *scr);
+int puts_helper(const char *str);
 void scroll(screen_t *scr);
 void move_csr(screen_t *scr);
 void cls(screen_t *scr);

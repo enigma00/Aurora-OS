@@ -25,7 +25,7 @@ int putchar(int c, screen_t *scr)
 			scr->csr_y++;
 			break;
 		default:
-			scr->textptr[scr->csr_y * scr->width + scr->csr_x] = (((unsigned char) c) | (scr->attrib << 8));
+			scr->textptr[scr->csr_y * scr->width + scr->csr_x] = (((unsigned char) (c & 0xFF)) | (scr->attrib << 8));
 			scr->csr_x++;
 	}
 	if (scr->csr_x >= scr->width)
@@ -35,8 +35,14 @@ int putchar(int c, screen_t *scr)
 	}
 
 	scroll(scr);
-	if (scr == current)
+	if (scr == curr_screen)
 	{
 		move_csr(scr);
 	}
+	return c;
+}
+
+int putchar_helper(int c)
+{
+	return putchar(c, curr_screen);
 }
