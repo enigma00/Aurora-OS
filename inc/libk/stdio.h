@@ -6,16 +6,18 @@
 
 typedef struct screen
 {
-	unsigned int *textptr;
+	unsigned short *textptr;
 	unsigned int attrib;
-	unsigned int csr_x;
-	unsigned int csr_y;
-	unsigned int esc1;
-	unsigned int esc2;
-	unsigned int esc3;
+	int csr_x;
+	int csr_y;
+	int esc1;
+	int esc2;
+	int esc3;
 	unsigned int width;
 	unsigned int height;
 } screen_t;
+
+screen_t *current;
 
 int putchar(int c, screen_t *scr);
 int puts(const char *str, screen_t *scr);
