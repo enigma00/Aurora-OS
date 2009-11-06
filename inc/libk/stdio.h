@@ -16,17 +16,18 @@ typedef struct screen
 	unsigned int height;
 } screen_t;
 
-screen_t *curr_screen;
+screen_t curr_screen;
 
 unsigned short screen_port_num;
 
-int putchar(int c, screen_t *scr);
-int putchar_helper(int c);
-int puts(const char *str, screen_t *scr);
-int puts_helper(const char *str);
+int putchar(int c);
+int putchar_help(int c, screen_t *scr);
+int puts(const char *str);
 void scroll(screen_t *scr);
 void move_csr(screen_t *scr);
 void cls(screen_t *scr);
 void setcolor(unsigned int color, screen_t *scr);
+int printf(const char *format, ...);
+int sprintf(char *str, const char *format, ...);
 
 #endif

@@ -1,25 +1,18 @@
 #include <stdio.h>
 #include <string.h>
 
-int puts(const char *str, screen_t *scr)
+int puts_help(const char *str, screen_t *scr)
 {
 	unsigned int i;
 
 	for (i=0; i < strlen(str); i++)
 	{
-		putchar(str[i], scr);
+		putchar_help(str[i], scr);
 	}
 	return 0;
 }
 
-int puts_helper(const char *str)
+int puts(const char *str)
 {
-	unsigned int i;
-
-
-	for (i=0; i < strlen(str); i++)
-	{
-		putchar_helper(str[i]);
-	}
-	return 0;
+	return puts_help(str, &curr_screen);
 }

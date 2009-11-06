@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int putchar(int c, screen_t *scr)
+int putchar_help(int c, screen_t *scr)
 {
 	switch (c)
 	{
@@ -35,14 +35,14 @@ int putchar(int c, screen_t *scr)
 	}
 
 	scroll(scr);
-	if (scr == curr_screen)
+	if (scr == &curr_screen)
 	{
 		move_csr(scr);
 	}
 	return c;
 }
 
-int putchar_helper(int c)
+int putchar(int c)
 {
-	return putchar(c, curr_screen);
+	return putchar_help(c, &curr_screen);
 }
