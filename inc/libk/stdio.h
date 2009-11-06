@@ -18,6 +18,8 @@ typedef struct screen
 
 screen_t *curr_screen;
 
+unsigned short screen_port_num;
+
 int putchar(int c, screen_t *scr);
 int putchar_helper(int c);
 int puts(const char *str, screen_t *scr);
