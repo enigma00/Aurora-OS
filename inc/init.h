@@ -3,5 +3,6 @@
 
 extern void init();
 extern void init_screen();
+extern void init_gdt();
 
 #endif

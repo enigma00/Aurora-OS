@@ -4,6 +4,6 @@
 void init()
 {
 	init_screen();
-	printf("hello there!");
+	init_gdt();
 	for(;;);
 }
