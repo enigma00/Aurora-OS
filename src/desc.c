@@ -48,3 +48,42 @@ void init_gdt()
 
 	gdt_flush();
 }
+
+typedef struct idt_entry
+{
+	unsigned short base_low;
+	unsigned short sel;
+	unsigned char zero;
+	unsigned char flags;
+	unsigned short base_high;
+} __attribute__((packed)) idt_entry_t;
+
+struct idt_ptr
+{
+	unsigned short limit;
+	unsigned int base;
+} __attribute__((packed));
+
+idt_entry_t idt[256];
+struct idt_ptr idtp;
+
+extern void idt_load();
+
+void idt_set_gate(unsigned char num, unsigned long base, unsigned short sel, unsigned char flags)
+{
+	idt[num].base_low = base & 0x0000FFFF;
+	idt[num].base_high = (base & 0xFFFF0000) >> 16;
+
+	idt[num].sel = sel;
+	idt[num].flags = flags;}
+}
+
+void init_idt()
+{
+	idtp.limit = (sizeof(idt_entry_t) * 256) -1;
+	idtp.base = (unsigned int) &idt;
+
+	memset(&idt, 0, sizeof(idt_entry_t) * 256);
+
+	idt_load();
+}
