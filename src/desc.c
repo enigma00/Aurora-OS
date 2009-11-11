@@ -1,4 +1,4 @@
-
+#include <string.h>
 
 typedef struct gdt_entry
 {
@@ -75,7 +75,7 @@ void idt_set_gate(unsigned char num, unsigned long base, unsigned short sel, uns
 	idt[num].base_high = (base & 0xFFFF0000) >> 16;
 
 	idt[num].sel = sel;
-	idt[num].flags = flags;}
+	idt[num].flags = flags;
 }
 
 void init_idt()

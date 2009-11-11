@@ -26,10 +26,8 @@ kernel.bin: $(OBJFILES)
 test: aurora.iso
 	@qemu -cdrom aurora.iso -net none -s
 
-debug:
-	@qemu -cdrom aurora.iso -net none -S &
-	sleep 2
-	gdb
+debug: aurora.iso
+	@qemu -cdrom aurora.iso -net none -s -S &
 
 clean:
 	-@$(RM) $(wildcard $(OBJFILES) $(DEPFILES) kernel.bin aurora.iso *~)

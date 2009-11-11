@@ -14,6 +14,7 @@ typedef struct screen
 	int esc3;
 	unsigned int width;
 	unsigned int height;
+	unsigned int depth;
 } screen_t;
 
 screen_t curr_screen;
@@ -25,7 +26,8 @@ int putchar_help(int c, screen_t *scr);
 int puts(const char *str);
 void scroll(screen_t *scr);
 void move_csr(screen_t *scr);
-void cls(screen_t *scr);
+void cls();
+void cls_help(screen_t *screen)
 void setcolor(unsigned int color, screen_t *scr);
 int printf(const char *format, ...);
 int sprintf(char *str, const char *format, ...);
